@@ -14,6 +14,7 @@ import org.junit.Test;
 public class NIOFileAPITest {
 	private static String HOME=System.getProperty("user.dir");
 	private static String PLAY_WITH_NIO="TempPlayGround";
+	
 	@Test
 	public void givenPathWhenCheckedThenConfirm() throws IOException {
 		Path homePath=Paths.get(HOME);
@@ -44,6 +45,13 @@ public class NIOFileAPITest {
 		Files.newDirectoryStream(playPath,path->path.toFile().isFile() &&
 				                          path.toString().startsWith("temp"))
 		                                  .forEach(System.out::println);
+	}
+	
+	@Test
+	public void givenADirectoryWhenWatchedListaAllTheActivities() throws IOException{
+		Path dir=Paths.get(HOME+"/"+PLAY_WITH_NIO);
+		Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+		new Java8WatchServiceExample(dir).processEvents();
 	}
 
 }
