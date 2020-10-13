@@ -8,6 +8,9 @@ public class EmployeePayrollService {
 	public EmployeePayrollService(List<EmployeePayrollData> employeePayrollList) {
 		this.employeePayrollList=employeePayrollList;
 	}
+	public EmployeePayrollService() {
+		
+	}
 	
 	public void readEmployeePayrollData(Scanner consoleInputReader) {
 		System.out.println("Enter Employee ID: ");
@@ -25,6 +28,12 @@ public class EmployeePayrollService {
 		else if(ioService.equals(IOService.FILE_IO))
 			new EmployeePayrollFileIOService().writeData(employeePayrollList);
 		
+	}
+	public List<EmployeePayrollData> readEmployeePayrollData(IOService ioService) {
+		List<EmployeePayrollData> employePayrollDataList=new ArrayList<EmployeePayrollData>();
+		if(ioService.equals(IOService.FILE_IO))
+			employePayrollDataList=new EmployeePayrollFileIOService().readData();
+		return employePayrollDataList;
 	}
 	public void printData(IOService ioService) {
 		if(ioService.equals(IOService.FILE_IO))

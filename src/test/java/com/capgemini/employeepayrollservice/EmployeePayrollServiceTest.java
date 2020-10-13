@@ -2,7 +2,8 @@ package com.capgemini.employeepayrollservice;
 
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
+
+import java.util.*;
 
 import org.junit.Test;
 
@@ -23,6 +24,14 @@ public class EmployeePayrollServiceTest {
 		employeePayrollService.printData(IOService.FILE_IO);
 		long numberOfEmployees=employeePayrollService.countNumberOfEmployees();
 		assertEquals(3,numberOfEmployees);
+	}
+	@Test
+	public void givenFileOnReadingFromFilesShouldMatchEmployeeCount() {
+		EmployeePayrollService employeePayrollService=new EmployeePayrollService();
+		List<EmployeePayrollData> employeePayrollDataList=employeePayrollService.readEmployeePayrollData(IOService.FILE_IO);
+		System.out.println( employeePayrollDataList);
+		
+		assertEquals(3,employeePayrollDataList.size());
 	}
 	
 }
