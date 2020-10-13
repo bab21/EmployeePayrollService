@@ -1,0 +1,3 @@
+id= 1, name= Babli, salary= 30000.0
+id= 2, name= Nancy, salary= 40000.0
+id= 3, name= Sagar, salary= 50000.0
